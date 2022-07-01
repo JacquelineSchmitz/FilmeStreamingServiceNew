@@ -19,12 +19,16 @@ class Datasource(private val context: Context) {
     fun loadMovies(): List<Movie> {
         // Die Liste an Filmen
         // TODO Schreibe hier deinen Code
-
+        val movie = mutableListOf<Movie>()
         // Befülle die Liste
         // TODO Schreibe hier deinen Code
-
+        for (index in 1..numberOfTitles){
+            val title = getTitle(index)
+            val image = getImage(getTitle(index))
+            movie.add(Movie(title, image))
+        }
         // Liefere die Liste zurück
-        return TODO()
+        return movie
     }
 
     /**

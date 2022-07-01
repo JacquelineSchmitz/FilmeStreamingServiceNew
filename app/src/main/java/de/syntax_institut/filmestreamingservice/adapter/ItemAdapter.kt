@@ -23,6 +23,8 @@ class ItemAdapter(
      */
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // TODO Schreibe hier deinen Code
+        val textView: TextView = itemView.findViewById(R.id.Filmtitel)
+        val imageView: ImageView = itemView.findViewById(R.id.FilmPoster)
     }
 
     /**
@@ -32,9 +34,10 @@ class ItemAdapter(
 
         // das itemLayout wird gebaut
         // TODO Schreibe hier deinen Code
-
+        val adapterLayout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item, parent, false)
         // und in einem ViewHolder zurückgegeben
-        return TODO()
+        return ItemViewHolder(adapterLayout)
     }
 
     /**
@@ -43,12 +46,15 @@ class ItemAdapter(
      */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         // TODO Schreibe hier deinen Code
+        val item = dataset[position]
+        holder.textView.text = context.resources.getString(item.stringResource)
+        holder.imageView.setImageResource(item.imageResource)
     }
 
     /**
      * damit der LayoutManager weiß, wie lang die Liste ist
      */
     override fun getItemCount(): Int {
-        return TODO()
+        return dataset.size
     }
 }
